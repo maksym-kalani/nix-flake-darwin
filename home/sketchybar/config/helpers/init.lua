@@ -1,0 +1,2 @@
+-- The Nix SketchyBar wrapper sets LUA_CPATH for SbarLua.
+-- Helper binaries are built by Nix, not at startup.

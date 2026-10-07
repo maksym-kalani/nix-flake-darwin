@@ -1,0 +1,127 @@
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+#on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = false
+after-startup-command = ['exec-and-forget sketchybar', 'exec-and-forget borders style=round order=above width=0.5	hidpi=on active_color=0xff800080 inactive_color=0xff282c34 background_color=0xff21252b width=5.0']
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+]
+start-at-login = true
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 30
+
+[exec]
+inherit-env-vars = true
+
+[exec.env-vars]
+PATH = '${HOME}/.nix-profile/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+
+[workspace-to-monitor-force-assignment]
+# Send 1–7 to the external monitor (assumes your external is set as the macOS “Main” display)
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = 'main'
+
+# Keep 8–9 on the laptop panel
+7 = 'built-in'
+8 = 'built-in'
+9 = 'built-in'
+
+[[on-window-detected]]
+if.app-id = 'app.grayslate.Grayslate'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'layout floating'
+
+[gaps]
+    inner.horizontal = 15
+    inner.vertical =   15
+    outer.left =       15
+    outer.bottom =     15
+    outer.top =        [{ monitor.built-in = 20 }, 55]
+    outer.right =      15
+
+# --- Hyprland-like bindings with Option as mod ---
+[key-mapping]
+preset = 'qwerty'  # keep default; 'alt' is macOS Option
+
+
+[mode.main.binding]
+# --- Switch input source (send Ctrl+Space) ---
+alt-space = '''exec-and-forget osascript -e '
+tell application "System Events" to key code 49 using control down'
+'''
+alt-enter = '''exec-and-forget open -na Kitty'''
+
+# Zen Browser (mod + b)
+alt-b = '''exec-and-forget open -na "Zen Browser"'''
+
+# Commander One (mod + e)
+alt-e = '''exec-and-forget open -na "Commander One"'''
+
+# Rider (mod + r)
+alt-r = '''exec-and-forget open -na "Rider"'''
+
+# Slack (mod + l)
+alt-l = '''exec-and-forget open -na "Slack"'''
+
+# Grayslate (mod + g)
+alt-g = '''exec-and-forget open -na "Grayslate"'''
+
+# --- Workspaces: focus (mod+number) ---
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+# --- Move focused window to workspace (mod+Shift+number) ---
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# --- Move ALL windows from current workspace to target (mod+Cmd+number) ---
+# Uses list-windows to print ids, then moves each one.
+alt-cmd-1 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 1 --window-id $id; done'''
+alt-cmd-2 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 2 --window-id $id; done'''
+alt-cmd-3 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 3 --window-id $id; done'''
+alt-cmd-4 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 4 --window-id $id; done'''
+alt-cmd-5 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 5 --window-id $id; done'''
+alt-cmd-6 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 6 --window-id $id; done'''
+alt-cmd-7 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 7 --window-id $id; done'''
+alt-cmd-8 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 8 --window-id $id; done'''
+alt-cmd-9 = '''exec-and-forget for id in $(aerospace list-windows --workspace focused --format "%{window-id}"); do aerospace move-node-to-workspace 9 --window-id $id; done'''
+
+# --- Swap places of windows (mod+k) ---
+# DFS-next gives a predictable cycle through windows
+alt-k = 'swap dfs-next --swap-focus'
+
+# --- Toggle orientation (mod+j) ---
+alt-j = 'layout tiles horizontal vertical'
+
+# --- Toggle floating/tiling for focused window (mod+t) ---
+alt-t = 'layout floating tiling'
+
+# --- Toggle fullscreen (mod+f) ---
+alt-f = 'fullscreen'
+
+# Optional: quick reload if you tweak this file
+alt-backtick = 'reload-config'
+
+alt-q = 'close'

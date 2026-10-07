@@ -1,0 +1,5 @@
+#!/usr/bin/env lua
+
+-- Load the SketchyBar config. Nix supplies Lua and the helper binaries.
+require("helpers")
+require("init")

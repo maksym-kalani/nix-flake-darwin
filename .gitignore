@@ -1,0 +1,12 @@
+# nix build outputs
+result
+result-*
+
+# sketchybar compiled helpers
+home/sketchybar/config/helpers/**/bin/
+
+# local agent planning state
+.taskman/
+
+.DS_Store
+__pycache__/
