@@ -48,5 +48,6 @@ in
     tree
     yarn
     yazi
+    vicinae
   ];
 }
