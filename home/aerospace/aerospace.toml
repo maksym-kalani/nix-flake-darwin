@@ -46,10 +46,10 @@ tell application "System Events" to key code 49 using control down'
 alt-enter = '''exec-and-forget open -na Kitty'''
 
 # Zen Browser (mod + b)
-alt-b = '''exec-and-forget open -na "Zen Browser"'''
+alt-b = '''exec-and-forget open -a Zen'''
 
-# Commander One (mod + e)
-alt-e = '''exec-and-forget open -na "Commander One"'''
+# Finder (mod + e)
+alt-e = '''exec-and-forget open -a Finder'''
 
 # Rider (mod + r)
 alt-r = '''exec-and-forget open -na "Rider"'''
