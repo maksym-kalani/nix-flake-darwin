@@ -8,21 +8,17 @@ let
 in
 {
   home.packages = with pkgs; [
-    acli
     aerospace
     claude-code
-    aws-vault
     bat
     betterdisplay
     codex
-    colordiff
     coreutils
     curl
     eza
     fastfetch
     fd
     ffmpeg
-    flameshot
     git
     jq
     keycastr
@@ -39,15 +35,12 @@ in
     openssh
     pi-coding-agent
     pnpm
-    powershell
-    rich-cli
     ripgrep
     stow
     switchaudio-osx
     tmux
     tree
-    yarn
-    yazi
     vicinae
+    nil
   ];
 }

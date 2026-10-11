@@ -1,4 +1,26 @@
+{ config, lib, ... }:
+let
+  user = config.system.primaryUser;
+in
 {
+  # AeroSpace and SketchyBar come from Nix (see home/). Remove the Homebrew
+  # copies so their binaries and AeroSpace.app cannot shadow the Nix ones.
+  # Homebrew cleanup stays disabled, so only these two are removed.
+  system.activationScripts.postActivation.text = lib.mkBefore ''
+    brew() { sudo --user=${user} --set-home -- /opt/homebrew/bin/brew "$@"; }
+    if [ -x /opt/homebrew/bin/brew ]; then
+      if brew list --cask aerospace >/dev/null 2>&1; then
+        echo "removing Homebrew AeroSpace (managed by Nix)..." >&2
+        brew uninstall --cask aerospace
+      fi
+      if brew list --formula sketchybar >/dev/null 2>&1; then
+        echo "removing Homebrew SketchyBar (managed by Nix)..." >&2
+        brew services stop sketchybar >/dev/null 2>&1 || true
+        brew uninstall --formula sketchybar
+      fi
+    fi
+  '';
+
   homebrew = {
     enable = true;
 
@@ -30,32 +52,31 @@
     ];
 
     brews = [
-      "node"
-      "aws-cdk"
-      "awscli"
-      "cdk"
-      {
-        name = "dotnet@8";
-        link = true;
-      }
-      "dotnet"
-      # Keg-only. psql, pg_dump, and pg_restore. Nix libpq has no binaries.
-      "libpq"
       "felixkratz/formulae/borders"
-      "parquet-cli"
+      "findutils"
+      "gawk"
+      "gh"
+      "gnu-sed"
+      "gnu-tar"
+      "grep"
       "tccutil"
-      "avivsinai/tap/bitbucket-cli"
     ];
 
     casks = [
-      "nikitabobko/tap/aerospace"
-      "docker-desktop"
+      "discord"
+      "element"
       "font-sf-mono"
       "font-sf-pro"
+      "jellyfin-media-player"
+      "obs"
+      "obsidian"
+      "raycast"
       "shriram-ethiraj/grayslate/grayslate"
-      "marta"
       "sf-symbols"
-      "windows-app"
+      "spotify"
+      "telegram"
+      "zed"
+      "zen"
     ];
   };
 }

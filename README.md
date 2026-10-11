@@ -1,7 +1,7 @@
 # macOS Nix config
 
-This flake manages packages, shell settings, and app configs for `maksymkalani`
-on `Maksyms-MacBook-Pro` (`aarch64-darwin`).
+This flake manages packages, shell settings, and app configs for `maksym`
+on `FunBook` (`aarch64-darwin`).
 
 ## Layout
 
@@ -23,6 +23,7 @@ home/
     config/               Lua config, C helper sources, and fonts
 darwin/
   default.nix             nix-darwin entry point
+  defaults.nix            macOS settings (system.defaults)
   homebrew.nix            Packages that remain in Homebrew
 helpers/
   nix-helpers.nix         ns and rebuild command definitions
@@ -55,8 +56,8 @@ Run from the flake root:
 
 ```sh
 nix flake check --all-systems --no-write-lock-file
-nix build .#homeConfigurations.maksymkalani.activationPackage --no-link --no-write-lock-file
-nix build '.#darwinConfigurations.Maksyms-MacBook-Pro.system' --no-link --no-write-lock-file
+nix build .#homeConfigurations.maksym.activationPackage --no-link --no-write-lock-file
+nix build '.#darwinConfigurations.FunBook.system' --no-link --no-write-lock-file
 ```
 
 The tests parse the declarative JSON/TOML sources and load SketchyBar with a fake

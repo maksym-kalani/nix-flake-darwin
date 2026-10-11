@@ -3,6 +3,7 @@
   nixpkgs,
   darwinRebuild,
   system,
+  hostname,
 }:
 let
   shellPackages = pkgs.writeText "shell-packages.nix" ''
@@ -20,7 +21,7 @@ pkgs.buildEnv {
     '')
     (pkgs.writeShellScriptBin "rebuild" ''
       exec sudo ${darwinRebuild}/bin/darwin-rebuild switch \
-        --flake "$HOME/.config/nixpkgs#Maksyms-MacBook-Pro"
+        --flake "$HOME/nix-flake-darwin#${hostname}"
     '')
   ];
 }

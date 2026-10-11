@@ -36,7 +36,7 @@ nix flake check
 Build the Home Manager configuration without activating it:
 
 ```sh
-nix build .#homeConfigurations.maksymkalani.activationPackage --no-link
+nix build .#homeConfigurations.maksym.activationPackage --no-link
 ```
 
 Nix compiles the helpers during the build. The config does not run `make`, clone

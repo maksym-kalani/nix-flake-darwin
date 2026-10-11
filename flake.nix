@@ -25,7 +25,8 @@
     }:
     let
       system = "aarch64-darwin";
-      username = "maksymkalani";
+      username = "maksym";
+      hostname = "FunBook";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -35,6 +36,7 @@
           pkgs
           nixpkgs
           system
+          hostname
           ;
         darwinRebuild = nix-darwin.packages.${system}.default;
       };
@@ -56,9 +58,9 @@
         modules = [ ./home ];
       };
 
-      darwinConfigurations."Maksyms-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         specialArgs = {
-          inherit username;
+          inherit username hostname;
           hostPlatform = system;
         };
         modules = [
