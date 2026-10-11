@@ -36,9 +36,8 @@ assert workspace_hook[2] == (
     "PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
 )
 
-assignments = aerospace["workspace-to-monitor-force-assignment"]
-assert assignments == {str(n): "main" if n <= 6 else "built-in" for n in range(1, 10)}
-assert aerospace["gaps"]["outer"]["top"] == [{"monitor": {"built-in": 20}}, 55]
+assert "workspace-to-monitor-force-assignment" not in aerospace
+assert aerospace["gaps"]["outer"]["top"] == 55
 bindings = aerospace["mode"]["main"]["binding"]
 for number in range(1, 10):
     assert bindings[f"alt-{number}"] == f"workspace {number}"

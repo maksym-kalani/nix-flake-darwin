@@ -39,7 +39,7 @@ tests/
   equivalent settings that were inline in the Zsh module.
 - AeroSpace uses `home/aerospace/aerospace.toml`, an unchanged copy of the current
   `~/.aerospace.toml`. Home Manager declares that home file. The existing login
-  startup, borders command, key bindings, monitor rules, and SketchyBar hooks stay
+  startup, borders command, key bindings, gaps, and SketchyBar hooks stay
   in the TOML file. No Home Manager launch agent or reload hook is added.
 - SketchyBar uses the current Lua config under `home/sketchybar/config/`. See its
   [README](home/sketchybar/config/README.md) for helper, font, and permission details.

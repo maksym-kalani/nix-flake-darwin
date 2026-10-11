@@ -20,7 +20,9 @@ pkgs.buildEnv {
       exec nix shell --file ${shellPackages} "$@"
     '')
     (pkgs.writeShellScriptBin "rebuild" ''
-      exec sudo ${darwinRebuild}/bin/darwin-rebuild switch \
+      # Flakes are only enabled in the user's nix.conf, not root's.
+      exec sudo env NIX_CONFIG="experimental-features = nix-command flakes" \
+        ${darwinRebuild}/bin/darwin-rebuild switch \
         --flake "$HOME/nix-flake-darwin#${hostname}"
     '')
   ];

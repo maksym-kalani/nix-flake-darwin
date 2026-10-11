@@ -70,6 +70,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = false;
+              # Rename files that are in the way (e.g. ~/.zshrc -> ~/.zshrc.hm-backup).
+              backupFileExtension = "hm-backup";
               extraSpecialArgs = { inherit nixHelpers; };
               users.${username} = ./home;
             };

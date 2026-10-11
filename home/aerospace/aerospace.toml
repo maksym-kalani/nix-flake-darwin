@@ -17,20 +17,6 @@ inherit-env-vars = true
 [exec.env-vars]
 PATH = '${HOME}/.nix-profile/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
-[workspace-to-monitor-force-assignment]
-# Send 1–7 to the external monitor (assumes your external is set as the macOS “Main” display)
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
-6 = 'main'
-
-# Keep 8–9 on the laptop panel
-7 = 'built-in'
-8 = 'built-in'
-9 = 'built-in'
-
 [[on-window-detected]]
 if.app-id = 'app.grayslate.Grayslate'
 run = 'layout floating'
@@ -44,7 +30,7 @@ run = 'layout floating'
     inner.vertical =   15
     outer.left =       15
     outer.bottom =     15
-    outer.top =        [{ monitor.built-in = 20 }, 55]
+    outer.top =        55  # SketchyBar: height 40 + y_offset 4
     outer.right =      15
 
 # --- Hyprland-like bindings with Option as mod ---
