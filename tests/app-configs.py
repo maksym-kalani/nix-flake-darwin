@@ -44,5 +44,8 @@ for number in range(1, 10):
     assert bindings[f"alt-shift-{number}"] == f"move-node-to-workspace {number}"
 assert bindings["alt-backtick"] == "reload-config"
 assert bindings["alt-q"] == "close"
+assert bindings["alt-d"] == "exec-and-forget open -a Discord"
+assert bindings["alt-l"] == "exec-and-forget open -a Telegram"
+assert "alt-space" not in bindings
 
 print("App config test passed (JSON/TOML, theme, AeroSpace hooks and bindings; no live commands)")

@@ -39,23 +39,22 @@ preset = 'qwerty'  # keep default; 'alt' is macOS Option
 
 
 [mode.main.binding]
-# --- Switch input source (send Ctrl+Space) ---
-alt-space = '''exec-and-forget osascript -e '
-tell application "System Events" to key code 49 using control down'
-'''
 alt-enter = '''exec-and-forget open -na Kitty'''
 
 # Zen Browser (mod + b)
-alt-b = '''exec-and-forget open -a Zen'''
+alt-b = '''exec-and-forget open -na "Zen"'''
 
-# Finder (mod + e)
-alt-e = '''exec-and-forget open -a Finder'''
+# Finder in home folder (mod + e)
+alt-e = '''exec-and-forget open ~'''
+
+# Discord (mod + d)
+alt-d = '''exec-and-forget open -a Discord'''
+
+# Telegram (mod + l)
+alt-l = '''exec-and-forget open -a Telegram'''
 
 # Rider (mod + r)
 alt-r = '''exec-and-forget open -na "Rider"'''
-
-# Slack (mod + l)
-alt-l = '''exec-and-forget open -na "Slack"'''
 
 # Grayslate (mod + g)
 alt-g = '''exec-and-forget open -na "Grayslate"'''
