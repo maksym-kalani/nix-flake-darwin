@@ -65,8 +65,8 @@ API. They do not start apps, run live commands, or change permissions.
 
 ## Update and activate
 
-These commands only build. They do not activate configs, remove Homebrew
-packages, or reload running services. Homebrew activation cleanup stays disabled.
+The build commands above do not activate configs, remove Homebrew packages, or
+reload running services.
 
 To update all flake inputs and apply the complete configuration, run:
 
@@ -78,10 +78,8 @@ nix flake update && rebuild
 configuration, so the same system generation activates the user configuration.
 Home Manager also updates `rebuild`, `ns`, and `claude-code`. The standalone
 `homeConfigurations` output remains available for build checks, but `rebuild`
-does not activate it separately. Homebrew auto-update, package upgrades, and
-cleanup stay disabled.
+does not activate it separately. On activation, Homebrew auto-updates, upgrades
+declared packages, and uninstalls every formula, cask, and tap not declared in
+`darwin/homebrew.nix` (app data in `~/Library` is kept).
 
-The first Home Manager activation can conflict with existing `.aerospace.toml`
-and SketchyBar files. Back up those files before switching. Do not force an
-overwrite. AeroSpace must also resolve the Nix SketchyBar wrapper rather than the
-older Homebrew binary after activation.
+Home Manager renames existing files that are in the way to `*.hm-backup`.

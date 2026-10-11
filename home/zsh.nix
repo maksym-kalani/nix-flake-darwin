@@ -31,8 +31,8 @@
       };
 
       sessionVariables = {
-        VISUAL = "/Applications/Zed.app/Contents/MacOS/cli --wait";
-        EDITOR = "/Applications/Zed.app/Contents/MacOS/cli --wait";
+        VISUAL = "zeditor --wait";
+        EDITOR = "zeditor --wait";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
 

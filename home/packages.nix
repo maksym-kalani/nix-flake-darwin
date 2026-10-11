@@ -9,6 +9,14 @@ in
 {
   home.packages = with pkgs; [
     aerospace
+    discord
+    element-desktop
+    gh
+    jankyborders
+    jellyfin-desktop
+    obsidian
+    spotify
+    zed-editor
     claude-code
     bat
     betterdisplay
@@ -18,8 +26,13 @@ in
     eza
     fastfetch
     fd
+    findutils
     ffmpeg
+    gawk
     git
+    gnugrep
+    gnused
+    gnutar
     jq
     keycastr
     kitty
