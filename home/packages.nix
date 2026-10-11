@@ -9,7 +9,6 @@ in
 {
   home.packages = with pkgs; [
     aerospace
-    discord
     element-desktop
     gh
     jankyborders

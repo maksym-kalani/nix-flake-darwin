@@ -26,6 +26,9 @@
     brews = [ "tccutil" ];
 
     casks = [
+      # The Nix build patches the bundle and breaks its signature, so macOS
+      # reports it as damaged.
+      "discord"
       "font-sf-mono"
       "font-sf-pro"
       "obs"
