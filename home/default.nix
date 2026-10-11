@@ -1,3 +1,4 @@
+{ nix-flake, pkgs, ... }:
 {
   imports = [
     ./packages.nix
@@ -5,7 +6,12 @@
     ./oh-my-posh
     ./aerospace
     ./sketchybar
+    "${nix-flake}/home/features/pi-coding-agent"
   ];
+
+  features.piCodingAgent.enable = true;
+  # pi installs its `npm:` packages at runtime.
+  programs.pi-coding-agent.extraPackages = [ pkgs.nodejs ];
 
   home = {
     username = "maksym";

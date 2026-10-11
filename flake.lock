@@ -40,6 +40,23 @@
         "type": "github"
       }
     },
+    "nix-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791742765,
+        "narHash": "sha256-kqv8YwgIjRhMJ+xGB5CR1J198FXhiINRvu439bcU6jY=",
+        "owner": "maksym-kalani",
+        "repo": "nix-flake",
+        "rev": "91cec3eb5fe0f12cc4edb29e48c05684105962e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maksym-kalani",
+        "ref": "develop",
+        "repo": "nix-flake",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1791336361,
@@ -60,6 +77,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
+        "nix-flake": "nix-flake",
         "nixpkgs": "nixpkgs"
       }
     }

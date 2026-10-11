@@ -45,7 +45,6 @@ in
     nixHelpers
     opencode
     openssh
-    pi-coding-agent
     pnpm
     ripgrep
     stow

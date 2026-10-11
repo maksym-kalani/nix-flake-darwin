@@ -13,6 +13,12 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Source-only: modules are imported from here, not copied into this repo.
+    nix-flake = {
+      url = "github:maksym-kalani/nix-flake/develop";
+      flake = false;
+    };
   };
 
   outputs =
@@ -21,6 +27,7 @@
       nixpkgs,
       home-manager,
       nix-darwin,
+      nix-flake,
       ...
     }:
     let
@@ -54,7 +61,7 @@
 
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit nixHelpers; };
+        extraSpecialArgs = { inherit nixHelpers nix-flake; };
         modules = [ ./home ];
       };
 
@@ -72,7 +79,7 @@
               useUserPackages = false;
               # Rename files that are in the way (e.g. ~/.zshrc -> ~/.zshrc.hm-backup).
               backupFileExtension = "hm-backup";
-              extraSpecialArgs = { inherit nixHelpers; };
+              extraSpecialArgs = { inherit nixHelpers nix-flake; };
               users.${username} = ./home;
             };
           }
