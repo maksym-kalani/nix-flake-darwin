@@ -5,6 +5,8 @@
       AppleInterfaceStyle = "Dark";
       # SketchyBar replaces the menu bar.
       _HIHideMenuBar = true;
+      # Use F1, F2, etc. as standard function keys.
+      "com.apple.keyboard.fnState" = true;
     };
 
     dock = {
