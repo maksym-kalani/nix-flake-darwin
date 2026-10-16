@@ -7,6 +7,9 @@
       _HIHideMenuBar = true;
       # Use F1, F2, etc. as standard function keys.
       "com.apple.keyboard.fnState" = true;
+      # Key repeat: 2 = fastest repeat, 30 = short delay before repeating.
+      KeyRepeat = 2;
+      InitialKeyRepeat = 30;
     };
 
     dock = {
